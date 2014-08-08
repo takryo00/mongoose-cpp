@@ -7,7 +7,7 @@ using namespace std;
 namespace Mongoose
 {
     Controller::Controller() 
-        : prefix(""), server(NULL), sessions(NULL)
+        : sessions(NULL), server(NULL), prefix("")
     {
     }
 
@@ -133,4 +133,4 @@ namespace Mongoose
     {
         sessions = sessions_;
     }
-};
+}
