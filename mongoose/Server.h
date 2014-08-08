@@ -128,6 +128,7 @@ namespace Mongoose
 
         protected:
             volatile bool stopped;
+            volatile bool destroyed;
             Sessions sessions;
             Mutex mutex;
             map<string, string> optionsMap;

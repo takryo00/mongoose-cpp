@@ -9,6 +9,7 @@
 #include <string.h>
 #include <iostream>
 #include "Server.h"
+#include "Utils.h"
 
 using namespace std;
 using namespace Mongoose;
@@ -75,7 +76,8 @@ namespace Mongoose
 {
     Server::Server(int port, const char *documentRoot)
         : server(NULL),
-        stopped(false)
+        stopped(false),
+        destroyed(false)
 #ifndef NO_WEBSOCKET 
           ,websockets(NULL)
 #endif
@@ -129,11 +131,15 @@ namespace Mongoose
         }
 
         mg_destroy_server(&server);
+        destroyed = true;
     }
 
     void Server::stop()
     {
         stopped = true;
+        while (!destroyed) {
+            Utils::sleep(100);
+        }
     }
 
     void Server::registerController(Controller *controller)
