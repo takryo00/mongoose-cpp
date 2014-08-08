@@ -138,6 +138,7 @@ namespace Mongoose
 
     void Server::registerController(Controller *controller)
     {
+        controller->setSessions(&sessions);
         controller->setServer(this);
         controller->setup();
         controllers.push_back(controller);

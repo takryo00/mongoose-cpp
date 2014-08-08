@@ -7,7 +7,7 @@ using namespace std;
 namespace Mongoose
 {
     Controller::Controller() 
-        : prefix(""), server(NULL)
+        : prefix(""), server(NULL), sessions(NULL)
     {
     }
 
@@ -122,5 +122,15 @@ namespace Mongoose
     vector<string> Controller::getUrls()
     {
         return urls;
+    }
+
+    Session &Controller::getSession(Request &request, Response &response)
+    {
+        return sessions->get(request, response);
+    }
+
+    void Controller::setSessions(Sessions *sessions_)
+    {
+        sessions = sessions_;
     }
 };
