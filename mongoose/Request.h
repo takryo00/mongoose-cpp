@@ -40,6 +40,14 @@ namespace Mongoose
             bool hasVariable(string key);
 
             /**
+             * Get All variable present in GET or POST data
+             *
+             * @brief getAllVariable
+             * @return map<string, string> with all variables
+             */
+            map<string, string> getAllVariable();
+
+            /**
              * Get the value for a certain variable
              *
              * @param string the name of the variable

@@ -154,6 +154,19 @@ namespace Mongoose
         return false;
     }
 
+    map<string, string> Request::getAllVariable()
+    {
+        map<string, string> mapKeyValue;
+        stringstream ss(data);
+        string param;
+        while(std::getline(ss, param, '&')){ //block for '&'
+            const string& key = param.substr(0, param.find('='));
+            const string& value = param.substr(param.find('=')+1);
+            mapKeyValue[key] = value; // insert map
+        }
+        return mapKeyValue;
+    }
+
     bool Request::readVariable(const char *data, string key, string &output)
     {
         int size = 1024, ret;

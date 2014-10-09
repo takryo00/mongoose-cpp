@@ -142,3 +142,8 @@ if (EXAMPLES)
         endif (WEBSOCKET)
     endif (CPP_BINDING)
 endif (EXAMPLES)
+
+# install
+install (FILES mongoose.h DESTINATION include)
+install (DIRECTORY mongoose DESTINATION include PATTERN "*.cpp" EXCLUDE)
+install (TARGETS _mongoose DESTINATION lib)
