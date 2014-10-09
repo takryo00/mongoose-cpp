@@ -41,6 +41,7 @@ namespace Mongoose
 
             /**
              * Get All variable present in GET or POST data
+             *
              * @brief getAllVariable
              * @return map<string, string> with all variables
              */
