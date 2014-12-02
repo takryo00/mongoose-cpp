@@ -123,7 +123,9 @@ namespace Mongoose
 
     void Server::poll()
     {
-        // unsigned int current_timer = 0;
+#ifndef NO_WEBSOCKET
+        unsigned int current_timer = 0;
+#endif
         while (!stopped) {
             mg_poll_server(server, 1000);
 #ifndef NO_WEBSOCKET
