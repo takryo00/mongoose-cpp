@@ -104,7 +104,6 @@ namespace Mongoose
             startTime = getTime();
 #endif
             server = mg_create_server(this);
-            // size_t size = optionsMap.size()*2+1;
 
             map<string, string>::iterator it;
             for (it=optionsMap.begin(); it!=optionsMap.end(); it++) {
