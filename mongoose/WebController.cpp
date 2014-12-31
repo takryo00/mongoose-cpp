@@ -24,6 +24,6 @@ namespace Mongoose
 
         Session &session = sessions->get(request, response);
         session.ping();
-        response.setHeader("Content-type", "text/html");
+        response.setHeader("Content-Type", "text/html");
     }
 }
