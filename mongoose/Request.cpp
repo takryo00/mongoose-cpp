@@ -122,15 +122,15 @@ namespace Mongoose
 
 #ifdef ENABLE_REGEX_URL
     smatch Request::getMatches()
-    {   
+    {
         return matches;
-    }   
+    }
 
     bool Request::match(string pattern)
-    {   
+    {
         key = method + ":" + url;
         return regex_match(key, matches, regex(pattern));
-    }   
+    }
 #endif
 
     void Request::writeResponse(Response *response)
@@ -270,7 +270,14 @@ namespace Mongoose
 
         return output;
     }
-            
+
+    string Request::getHeaderKeyValue(const std::string& header_key) {
+      char dummy[32];
+      std::string result;
+      result = mg_get_header(connection, header_key.c_str());
+      return result;
+    }
+
     void Request::handleUploads()
     {
         char var_name[1024];

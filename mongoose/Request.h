@@ -76,6 +76,9 @@ namespace Mongoose
              */
             string getCookie(string key, string fallback = "");
 
+
+            string getHeaderKeyValue(const std::string& header_key);
+
             /**
              * Handle uploads to the target directory
              *
