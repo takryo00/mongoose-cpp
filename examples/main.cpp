@@ -16,7 +16,11 @@ class MyController : public WebController
     public: 
         void hello(Request &request, StreamResponse &response)
         {
-            response << "Hello " << htmlEntities(request.get("name", "... what's your name ?")) << endl;
+            try {
+                response << "Hello takano " << htmlEntities(request.get("name", "... what's your name ?")) << endl;
+            } catch (std::exception	e) {
+                cout << "exception!!" << e.what() << endl;
+            }
         }
 
         void form(Request &request, StreamResponse &response)

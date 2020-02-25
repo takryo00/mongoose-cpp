@@ -6,7 +6,7 @@
 using namespace std;
 
 static char charset[] = "abcdeghijklmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-#define CHARSET_SIZE (sizeof(charset)/sizeof(char))
+#define CHARSET_SIZE ((sizeof(charset)/sizeof(char)) - 1);
 
 namespace Mongoose
 {
@@ -28,16 +28,21 @@ namespace Mongoose
         if (request.hasCookie(key)) {
             return request.getCookie(key);
         } else {
-            ostringstream newCookie;
-            int i;
+            try {
+                ostringstream newCookie;
+                int i;
 
-            for (i=0; i<30; i++) {
-                newCookie << charset[rand()%CHARSET_SIZE];
+                for (i=0; i<30; i++) {
+                    newCookie << charset[rand()%CHARSET_SIZE];
+                }
+
+                response.setCookie(key, newCookie.str());
+
+                return newCookie.str();
+            } catch (std::exception e) {
+                cout << "exception!!" << e.what() << endl;
+                return "";
             }
-
-            response.setCookie(key, newCookie.str());
-
-            return newCookie.str();
         }
     }
 
