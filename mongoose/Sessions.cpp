@@ -6,7 +6,7 @@
 using namespace std;
 
 static char charset[] = "abcdeghijklmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-#define CHARSET_SIZE ((sizeof(charset)/sizeof(char)) - 1);
+#define CHARSET_SIZE ((sizeof(charset)/sizeof(char)) - 1)
 
 namespace Mongoose
 {
